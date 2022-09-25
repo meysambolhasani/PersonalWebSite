@@ -17,7 +17,7 @@ class Author(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.EmailField(blank=True)
     author_image = models.ImageField(
-        upload_to="static/images/authors", null=True)
+        upload_to="blog/static/images/authors", null=True)
 
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
