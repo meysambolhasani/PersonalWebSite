@@ -2,7 +2,8 @@
 {% block title %}blog{% endblock title %}
 {% block content %}
 <h1>Landing Blog page</h1>
-<a href="{% url 'all-post'%}"> All Post</a>
+<span><a href="{% url 'all-post'%}">All Post</a></span>
+<span><a href="{% url 'create-post'%}">Create Post</a></span>
 <ul>
   {% for post in last_post %}
   <li>

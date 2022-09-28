@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}single-post{% endblock title %}blog
+{% block title %}{{post.title|truncatewords:2}}{% endblock title %}blog
 {% block content %}
 <h1> Single Post page </h1>
 <div class="">
