@@ -1,5 +1,6 @@
 # from django.http import JsonResponse
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,permission_classes
+from rest_framework.permissions import IsAuthenticated,IsAdminUser
 from rest_framework.response import Response
 from .serializers import PostSerializer
 from blog.models import Post
@@ -33,6 +34,7 @@ def get_routes(request):
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def get_posts(request):
     posts=Post.objects.all()
     serializer=PostSerializer(posts,many=True)
@@ -41,6 +43,7 @@ def get_posts(request):
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def get_post(request,slug):
     post = Post.objects.get(slug=slug)
     serializer = PostSerializer(post, many=False)
