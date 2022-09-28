@@ -1,8 +1,19 @@
-{% extends 'base.html' %}
-
-{% block title %}blog{% endblock title %}blog
+{% extends 'base.html' %} 
+{% block title %}blog{% endblock title %}
 {% block content %}
-<h1> Landing Blog page </h1>
+<h1>Landing Blog page</h1>
+<a href="{% url 'all-post'%}"> All Post</a>
+<ul>
+  {% for post in last_post %}
+  <li>
+    <div class="post-card">
+      <a href="{% url 'single-post' post.slug %}">
+        <img src="#" />
+        Title: {{post.title}} Excerpt: {{post.excerpt}}
+      </a>
+    </div>
+  </li>
+  {% endfor%}
+</ul>
 
 {% endblock content %}
-

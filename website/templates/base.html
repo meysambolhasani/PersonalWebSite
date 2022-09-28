@@ -12,15 +12,18 @@
     <div class="main">
       <header class="main-header">
         <h1>My Main Header</h1>
+        <hr>
       </header>
       <nav class="main-nav">
-        <span>courses</span>
-        <span>blog</span>
-        <span>login</span>
-        <span>sign-up</span>
+        <span><a href="#">courses</a></span>
+        <span><a href="{% url 'last-posts'%}">blog</a></span>
+        <span><a href="#">login</a></span>
+        <span><a href="#">sign-up</a></span>
       </nav>
+      <hr>
     </div>
     <div class="container">{% block content %} {% endblock %}</div>
+    <hr>
     <div class="main-footer">
       <footer>
         <h3>My Footer</h3>

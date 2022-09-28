@@ -1,3 +1,4 @@
+
 from django.utils.text import slugify
 from django.core.validators import MinLengthValidator
 from django.db import models
@@ -17,7 +18,7 @@ class Author(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.EmailField(blank=True)
     author_image = models.ImageField(
-        upload_to="blog/static/images/authors", null=True)
+        upload_to="blog/static/images/authors", null=True,blank=True)
 
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
@@ -29,7 +30,7 @@ class Author(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=200)
     post_image = models.ImageField(
-        upload_to="blog/static/images/posts", null=True)
+        upload_to="blog/static/images/posts", null=True,blank=True)
     slug = models.SlugField(unique=True, db_index=True, blank=True, null=False)
     excerpt = models.CharField(max_length=250, blank=True)
     content = models.TextField(validators=[MinLengthValidator(10)])
@@ -54,3 +55,6 @@ class Comment(models.Model):
     text = models.TextField(max_length=400)
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name='comments')
+
+    
+

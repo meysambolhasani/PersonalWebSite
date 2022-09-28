@@ -3,6 +3,14 @@
 {% block title %}all-posts{% endblock title %}blog
 {% block content %}
 <h1> All Posts page </h1>
+<ul>
+    {% for post in posts %}
+    
+    <li><a href="{% url 'single-post' post.slug %}"> Title :{{ post.title}}   (Author:{{post.author}})</a></li>
+    
+    {% endfor %}
+
+</ul>
 
 {% endblock content %}
 

@@ -3,6 +3,45 @@
 {% block title %}single-post{% endblock title %}blog
 {% block content %}
 <h1> Single Post page </h1>
+<div class="">
+<section id="post-header">
+    <ul>
+        <li><img src="#"/></li>
+        <li> Title: {{post.title}}</li>
+        <li> Excerpt: {{post.excerpt}}</li>
+        <li> Author : {{post.author}}</li>
+                   
+    </ul>
+    <div class="post-tag">
+        {% for tag in tags%}
+            <span> {{ tag}}</span>
+            {% endfor %}
+        
+    </div>
+    <hr>
+</section>
+<section id="post-content">
+    
+    <p> {{post.content|linebreaks}}</p>
+</section>
+<hr>
+<section id="post-comments">
+    {% for comment in comments%}
+    {{comment.user_name}}
+       {{comment.user_email}}
+          {{comment.text}}
+    {% endfor%}      
+</section>
+<hr>
+</div>
+<div class="comment">
+<form action="{% url 'single-post' post.slug %}" method="POST">
+    {% csrf_token%}
+    {{comment_form.as_p}}
+    <button type="submit"> Save Comment</button>
 
+</form>
+
+</div>
 {% endblock content %}
 
